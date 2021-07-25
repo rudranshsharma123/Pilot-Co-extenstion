@@ -1,0 +1,117 @@
+{
+	"name": "copilot-sidebar",
+	"displayName": "copilot-sidebar",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.58.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:copilot-pet-view-sidebar",
+		"onView:copilot-sidebar-sidebar",
+		"onCommand:copilot-sidebar.helloWorld",
+		"onCommand:copilot-sidebar.refresh",
+		"onCommand:copilot-sidebar.addTodo"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "copilot-sidebar-sidebar-view",
+					"title": "copilot-sidebar",
+					"icon": "media/checklist.svg"
+				},
+				{
+					"id": "copilot-pet-view",
+					"title": "copilot-pet-view",
+					"icon": "media/dog-24.svg"
+				}
+			]
+		},
+		"views": {
+			"copilot-sidebar-sidebar-view": [
+				{
+					"type": "webview",
+					"id": "copilot-sidebar-sidebar",
+					"name": "copilot-sidebar",
+					"icon": "media/checklist.svg",
+					"contextualTitle": "copilot-sidebar"
+				}
+			],
+			"copilot-pet-view": [
+				{
+					"type": "webview",
+					"id": "copilot-pet-view-sidebar",
+					"name": "copilot-pet-view",
+					"icon": "media/dog-24.svg",
+					"contextualTitle": "copilot-pet-view"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "copilot-sidebar.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "copilot-sidebar.refresh",
+				"title": "Refresh"
+			},
+			{
+				"command": "copilot-sidebar.addTodo",
+				"title": "Add Todo"
+			},
+			{
+				"command": "copilot-sidebar.searchCode",
+				"title": "Find code"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "concurrently \"rollup -c -w\" \"webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@pyoner/svelte-ts-preprocess": "^1.3.0",
+		"@rollup/plugin-commonjs": "^19.0.1",
+		"@rollup/plugin-node-resolve": "^13.0.3",
+		"@rollup/plugin-typescript": "^8.2.3",
+		"@tsconfig/svelte": "^2.0.1",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.58.0",
+		"@typescript-eslint/eslint-plugin": "^4.26.0",
+		"@typescript-eslint/parser": "^4.26.0",
+		"concurrently": "^6.2.0",
+		"eslint": "^7.27.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"rollup": "^2.53.3",
+		"rollup-plugin-css-only": "^3.1.0",
+		"rollup-plugin-svelte": "^7.1.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"svelte": "^3.40.2",
+		"svelte-check": "^2.2.3",
+		"svelte-preprocess": "^4.7.4",
+		"ts-loader": "^9.2.2",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2",
+		"webpack": "^5.38.1",
+		"webpack-cli": "^4.7.0"
+	},
+	"dependencies": {
+		"superagent": "^6.1.0"
+	}
+}
